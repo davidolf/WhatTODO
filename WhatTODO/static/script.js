@@ -14,4 +14,13 @@ whatTodoApp.controller('TodoController', function($scope, $http) {
 				$scope.todos.push(todo);
 			});
 		});
+		
+		$scope.tags = [];
+		$http.get('api/tags').success(function (data) {
+			angular.forEach(data, function(value) {
+				var tag = {};
+				tag.text = value.text;
+				$scope.tags.push(tag);
+			});
+		});
 	});

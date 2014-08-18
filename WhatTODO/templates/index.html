@@ -31,7 +31,7 @@
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </div><!-- /.navbar -->
-<div class="container">
+<div class="container" ng-controller="{% block ng_controller %}TodoController{% endblock %}">
 
     <div class="row row-offcanvas row-offcanvas-right">
         <div class="col-xs-12 col-sm-9">
@@ -43,7 +43,7 @@
         <p>Here is a list of your TODOs:</p>
 <!--         <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p> -->
     </div>
-<div class="row" ng-controller="{% block ng_controller %}TodoController{% endblock %}">{% block content %}
+<div class="row">{% block todos %}
 {% verbatim %}
     <div class="col-6 col-sm-6 col-lg-4" ng-repeat="todo in todos">
      <h2>{{ todo.tag }}</h2>
@@ -55,18 +55,17 @@
 </div>
 
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+        {% block tags %}
+          {% verbatim %}
           <div class="list-group">
-            <a href="#" class="list-group-item active">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
+          	<span class="list-group-item active">Filter by tags:</span>
+          	<a href="#" class="list-group-item">show all tags</a>
+          	<a href="#" class="list-group-item" ng-repeat="tag in tags">Tag: {{ tag.text }}</a>
+          	<a href="#" class="list-group-item">+ new tag</a>
+          	
           </div>
+          {% endverbatim %}
+			{% endblock %}
         </div><!--/span-->
       </div><!--/row-->
       
