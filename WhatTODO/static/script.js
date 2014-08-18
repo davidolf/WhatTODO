@@ -11,6 +11,7 @@ whatTodoApp.controller('TodoController', function($scope, $http) {
 				var todo = {};
 				todo.tag = value.tag.text;
 				todo.text = value.text;
+				todo.dueDate = new Date(value.due).toLocaleString("sk");
 				$scope.todos.push(todo);
 			});
 		});
